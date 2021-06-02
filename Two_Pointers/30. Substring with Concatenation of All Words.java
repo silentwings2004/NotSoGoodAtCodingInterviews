@@ -2,7 +2,7 @@ package Two_Pointers;
 import java.util.*;
 
 class Solution {
-    // time = O(n * w * l), space = O(n * l)
+    // time = O(n * w * l), space = O(n * w)
     public List<Integer> findSubstring(String s, String[] words) {
         List<Integer> res = new ArrayList<>();
         // corner case
