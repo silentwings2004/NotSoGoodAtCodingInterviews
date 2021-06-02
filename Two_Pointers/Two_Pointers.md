@@ -1,8 +1,6 @@
-# NotSoGoodAtCodingInterviews
-面试不是请客吃饭，但可当做家常便饭
-
 ### Two_Pointers
 
+[分类模板]
 1. Sum类
 模板题：LC15_3Sum
 ```java
@@ -21,4 +19,21 @@ for (int i = 0; i < n; i++) {
         else right--;
     }
 }
+```
+
+
+[解题笔记]
+
+18. 4Sum (E)
+```
+注意这里j从i + 1出发 j = i + 1
+```
+259. 3Sum Smaller (M)
+```
+if (sum < target) => left++  
+left收缩，继续看是否有符合条件的解出现
+```
+30. Substring with Concatenation of All Words (M+)
+```
+w = words[0].length(),   i <= s.length() - n * w
 ```
