@@ -24,16 +24,16 @@ for (int i = 0; i < n; i++) {
 
 [解题笔记]
 
-18. 4Sum (E)
+18.4Sum (M)
 ```
 注意这里j从i + 1出发 j = i + 1
 ```
-259. 3Sum Smaller (M)
+259.3Sum-Smaller (M+)
 ```
 if (sum < target) => left++  
 left收缩，继续看是否有符合条件的解出现
 ```
-30. Substring with Concatenation of All Words (M+)
+30.Substring-with-Concatenation-of-All-Words (H)
 ```
 w = words[0].length(),   i <= s.length() - n * w
 ```
