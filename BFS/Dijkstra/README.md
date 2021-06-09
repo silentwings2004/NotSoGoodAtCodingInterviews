@@ -2,6 +2,7 @@
 
 [模板]
 
+```java
 private static final int[][] DIRECTIONS = new int[][]{{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
 PriorityQueue<int[]> pq = new PriorityQueue<>((o1, o2) -> o1[0] - o2[0]);
@@ -30,4 +31,4 @@ while (!pq.isEmpty()) {
     }
 }
 return res;
-
+```
