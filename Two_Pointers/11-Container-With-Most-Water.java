@@ -1,5 +1,5 @@
-
 package Two_Pointers;
+
 class Solution {
     // time = O(n), space = O(1)
     public int maxArea(int[] height) {
