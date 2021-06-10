@@ -1,3 +1,5 @@
+package BFS.Dijkstra;
+
 import java.util.PriorityQueue;
 
 class Solution {
