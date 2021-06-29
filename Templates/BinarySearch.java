@@ -1,7 +1,10 @@
 package Templates;
 
 public class BinarySearch {
-    public static int binarySearch(int[] nums, int target) {
+    public static int binarySearch2(int[] nums, int target) {
+        // corner case
+        if (nums == null || nums.length == 0) return -1;
+
         int left = 0, right = nums.length - 1;
         while (left < right) {
             int mid = left + (right - left) / 2;
@@ -32,6 +35,24 @@ public class BinarySearch {
         }
         if (nums[left] < target) return left + 1; // n + 1
         return left;
+    }
+
+    // B.S. II
+    public int binarySearch3(int[] nums, int target) {
+        // corner case
+        if (nums == null || nums.length == 0) return -1;
+
+        int left = 0, right = nums.length - 1;
+        while (left + 1 < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) return mid;
+            if (nums[mid] < target) left = mid;
+            else right = mid;
+        }
+        // post-processing
+        if (nums[left] == target) return left;
+        if (nums[right] == target) return right;
+        return -1;
     }
 
     public static void main(String[] args) {
