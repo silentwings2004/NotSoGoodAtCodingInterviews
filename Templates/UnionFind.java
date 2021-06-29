@@ -1,7 +1,7 @@
 package Templates;
 import java.util.*;
 
-public class UF {
+public class UnionFind {
     HashMap<Integer, Integer> father;
     public int findCircleNum(int[][] isConnected) {
         int n = isConnected.length;
