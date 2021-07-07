@@ -4,7 +4,7 @@ import java.util.*;
 // rolling hash(Rabin-Karp) + BS
 public class RollingHash { 
     // time = O(n^2), space = O(n^2)
-    public int longestRepeatingSubstring2(String s) {
+    public int longestRepeatingSubstring(String s) {
         // corner case
         if (s == null || s.length() == 0) return 0;
 
@@ -19,19 +19,18 @@ public class RollingHash {
     }
 
     private boolean found(String s, int len) {
-        long hash = 0, base = 26; // base at least need to be 26
-        final int M = (int)(1e9 + 7);
+        long hash = 0, base = (long)(1e5 + 7); // base at least need to be 100007, then no need to use M%
         HashSet<Long> set = new HashSet<>();
 
         long pow_base_len = 1;
         for (int i = 0; i < len; i++) {
-            pow_base_len = pow_base_len * base % M;
+            pow_base_len = pow_base_len * base;
         }
 
 
         for (int i = 0; i < s.length(); i++) {
-            hash = (hash * base + s.charAt(i) - 'a') % M;
-            if (i >= len) hash = (hash - (s.charAt(i - len) - 'a') * pow_base_len % M + M) % M;
+            hash = hash * base + s.charAt(i) - 'a';
+            if (i >= len) hash = hash - (s.charAt(i - len) - 'a') * pow_base_len;
             if (i >= len - 1) {
                 if (set.contains(hash)) return true;
                 set.add(hash); // len = 4 => 0123就有了4位，这时的hash才是有效的
