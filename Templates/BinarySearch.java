@@ -16,23 +16,27 @@ public class BinarySearch {
     }
 
     public static int lowerBound(int[] nums, int target) {
+        if (nums.length == 0) return 0;
+
         int left = 0, right = nums.length - 1;
         while (left < right) {
             int mid = left + (right - left) / 2;
             if (nums[mid] < target) left = mid + 1;
             else right = mid;
         }
-        return nums[left] > target ? left - 1 : left;
+        return left; // 在[left, right]里 <= target的第一个位置，最小不会越过left
     }
 
     public static int upperBound(int[] nums, int target) {
+        if (nums.length == 0) return 0;
+        
         int left = 0, right = nums.length - 1;
         while (left < right) {
-            int mid = left + (right - left) / 2 + 1;
-            if (nums[mid] <= target) left = mid;
-            else right = mid - 1;
+            int mid = left + (right - left) / 2;
+            if (nums[mid] <= target) left = mid + 1;
+            else right = mid;
         }
-        return nums[left] < target ? left + 1 : left;
+        return left; // 在[left, right]里 > target的第一个位置，最大不超过right
     }
 
     // B.S. II
@@ -54,9 +58,9 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 2, 2, 3, 3, 3, 3, 4, 5, 6};
-        int first = lowerBound(nums, 0);
-        int last = upperBound(nums, );
+        int[] nums = new int[]{2,3,5,7,9,10,18,101};
+        int first = lowerBound(nums, 2);
+        int last = upperBound(nums, 9);
         System.out.println(first + " " + last);
     }
 }
