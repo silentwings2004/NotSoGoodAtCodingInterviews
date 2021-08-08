@@ -85,6 +85,36 @@ public class Sort {
         helper(nums, left, end);
     }
 
+    // S3.2: Quick Sort v2 (random)
+    // time = O(nlogn), space = O(n)
+    public int[] sortArray32(int[] nums) {
+        quickSort(nums, 0, nums.length - 1);
+        return nums;
+    }
+    
+    private void quickSort(int[] nums, int left, int right) {
+        if (left >= right) return;
+        
+        int m = partition(nums, left, right);
+        quickSort(nums, left, m - 1);
+        quickSort(nums, m + 1, right);
+    }
+    
+    private int partition(int[] nums, int left, int right) {
+        Random random = new Random();
+        int p = random.nextInt(right - left + 1) + left;
+        swap(nums, left, p);
+        int pivot = nums[left];
+        p = left + 1;
+        
+        for (int i = left + 1; i <= right; i++) {
+            if (nums[i] < pivot) swap(nums, i, p++);
+        }
+        p--;
+        swap(nums, left, p);
+        return p;
+    }
+
     // S4: bucket sort
     // time = O(n), space = O(n)
     public int[] sortArray4(int[] nums) {
@@ -166,4 +196,42 @@ public class Sort {
             heapify(nums, n, max);
         }
     }
+
+        // S7.1: 真计数排序
+        public int[] sortArray7(int[] nums) {
+            int M = (int)1e5 + 5;
+            int[] cnt = new int[M];
+            int n = nums.length;
+            int[] ans = new int[n];
+            
+            for (int num : nums) {
+                cnt[num + 50000]++;
+            }
+            
+            for (int i = 1; i < M; i++) {
+                cnt[i] += cnt[i - 1];
+            }
+            
+            for (int i = n - 1; i >= 0; i--) {
+                ans[--cnt[nums[i] + 50000]] = nums[i];
+            }
+            return ans;
+        }
+        
+        // S7.2: 假计数排序
+        public int[] sortArray72(int[] nums) {
+            int M = (int)1e5 + 5;
+            int[] cnt = new int[M];
+            
+            for (int num : nums) {
+                cnt[num + 50000]++;
+            }
+            
+            int j = 0;
+            for (int i = -50000; i <= 50000; i++) {
+                while (cnt[i + 50000]-- > 0) nums[j++] = i;
+            }
+            
+            return nums;
+        }
 }
