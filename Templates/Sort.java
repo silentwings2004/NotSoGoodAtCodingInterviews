@@ -115,31 +115,57 @@ public class Sort {
         return p;
     }
 
-    // S4: bucket sort
+    // S4: bucket (fake count) sort
     // time = O(n), space = O(n)
     public int[] sortArray4(int[] nums) {
         // corner case
         if (nums == null || nums.length <= 1) return nums;
-
+        
         int n = nums.length;
         int min = nums[0], max = nums[0];
-        for (int num : nums) { // O(n)
-            min = Math.min(num, min);
-            max = Math.max(num, max);
+        
+        for (int num : nums) {
+            min = Math.min(min, num);
+            max = Math.max(max, num);
         }
-
+        
         int[] bucket = new int[max - min + 1];
-        for (int num : nums) { // O(n)
+        for (int num : nums) {
             bucket[num - min]++;
         }
+        
+        int j = 0;
+        for (int i = 0; i < bucket.length; i++) {
+            while (bucket[i]-- > 0) nums[j++] = i + min;
+        }
+        return nums;
+    }
 
+    // real count (bucket) sort
+    public int[] sortArray42(int[] nums) {
+        // corner case
+        if (nums == null || nums.length <= 1) return nums;
+        
+        int n = nums.length;
+        int min = nums[0], max = nums[0];
+        
+        for (int num : nums) {
+            min = Math.min(min, num);
+            max = Math.max(max, num);
+        }
+        
+        int[] bucket = new int[max - min + 1];
+        for (int num : nums) {
+            bucket[num - min]++;
+        }
+        
+        for (int i = 1; i < bucket.length; i++) {
+            bucket[i] += bucket[i - 1];
+        }
+        
         int[] res = new int[n];
-        int idx = 0;
-        for (int i = 0; i < bucket.length; i++) { // O(n)
-            while (bucket[i] > 0) {
-                res[idx++] = i + min;
-                bucket[i]--;
-            }
+        for (int i = n - 1; i >= 0; i--) {
+            res[--bucket[nums[i] - min]] = nums[i];
         }
         return res;
     }
