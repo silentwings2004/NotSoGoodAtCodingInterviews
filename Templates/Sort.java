@@ -142,6 +142,7 @@ public class Sort {
     }
 
     // real count (bucket) sort
+    // time = O(n), space = O(n)
     public int[] sortArray42(int[] nums) {
         // corner case
         if (nums == null || nums.length <= 1) return nums;
