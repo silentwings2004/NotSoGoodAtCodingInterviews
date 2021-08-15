@@ -15,3 +15,10 @@ Who should not take this course?
 2. Not fully understand most of the critical concepts in the ALG courses
 3. Shua-Ti masters
 4. Self-taught Genius
+
+```
+不是所有的爱情都会开花结果，
+也不是所有的爱人都能陪你走到最后，
+但是大弓可以对你不离不弃，
+所以，无论如何，请好好活着！！！
+```
