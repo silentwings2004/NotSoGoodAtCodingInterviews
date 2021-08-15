@@ -70,14 +70,14 @@ class Solution {
         return sorted[left] < target ? left : left - 1;
     }
 
-    // S2: divide & conquer + merge sort
+    // S1.2: divide & conquer + merge sort
     // time = O(nlogn), space = O(n)
     private int[] index;
     private long[] small;
     private int[] arr;
     private long[] freq;
     long Mod = (long)(1e9 + 7);
-    public int createSortedArray22(int[] instructions) {
+    public int createSortedArray12(int[] instructions) {
         // corner case
         if (instructions == null || instructions.length == 0) return 0;
 
