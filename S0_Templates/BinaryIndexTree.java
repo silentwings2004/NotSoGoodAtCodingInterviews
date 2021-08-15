@@ -1,4 +1,4 @@
-package Templates;
+package S0_Templates;
 
 public class BinaryIndexTree {
     int MAX_N = 100000;

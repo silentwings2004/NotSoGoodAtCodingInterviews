@@ -1,4 +1,4 @@
-package Templates;
+package S0_Templates;
 import java.util.*;
 
 // rolling hash(Rabin-Karp) + BS

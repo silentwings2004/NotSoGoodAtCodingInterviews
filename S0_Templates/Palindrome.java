@@ -1,4 +1,4 @@
-package Templates;
+package S0_Templates;
 
 public class Palindrome {
     public long constructPalin(long x, int type) {

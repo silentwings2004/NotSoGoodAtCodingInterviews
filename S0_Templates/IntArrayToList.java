@@ -1,4 +1,4 @@
-package Templates;
+package S0_Templates;
 import java.util.*;
 public class IntArrayToList {
     int N = (int)(1e9 + 7);

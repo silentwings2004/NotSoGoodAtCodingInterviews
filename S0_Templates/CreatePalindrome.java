@@ -1,4 +1,4 @@
-package Templates;
+package S0_Templates;
 
 public class CreatePalindrome {
     public long createEvenPalindrome(long i) { // 10 -> 1001

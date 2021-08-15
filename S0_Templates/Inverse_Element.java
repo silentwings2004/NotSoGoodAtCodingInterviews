@@ -1,4 +1,4 @@
-package Templates;
+package S0_Templates;
 public class Inverse_Element {
     long N = (long)(1e6 + 7), mod = 998244353;
     // Linear method to compute inv[i]

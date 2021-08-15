@@ -1,4 +1,4 @@
-package Templates;
+package S0_Templates;
 
 public class RecursionOfTree {
     public ResultType divideConquer(TreeNode root) {

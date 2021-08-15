@@ -1,4 +1,4 @@
-package Templates;
+package S0_Templates;
 
 /*
 stream Butter!

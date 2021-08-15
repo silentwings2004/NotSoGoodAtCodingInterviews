@@ -1,4 +1,4 @@
-package Templates;
+package S0_Templates;
 
 public class StateMachine {
     public int shortestWay(String source, String target) {

@@ -1,4 +1,4 @@
-package Templates;
+package S0_Templates;
 public class Combination {
     public void main() {
         // compute all C(n,m) saved in comb

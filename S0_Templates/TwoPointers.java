@@ -1,4 +1,4 @@
-package Templates;
+package S0_Templates;
 import java.util.*;
 
 public class TwoPointers {

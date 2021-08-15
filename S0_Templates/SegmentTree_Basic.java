@@ -1,4 +1,4 @@
-package Templates;
+package S0_Templates;
 
 public class SegmentTree_Basic {
     private SegTreeNode root;

@@ -1,4 +1,4 @@
-package Templates;
+package S0_Templates;
 
 public class StateCompression {
     public void main() {

@@ -1,4 +1,4 @@
-package Templates;
+package S0_Templates;
 
 public class LCSAndSCS {
     public int longestCommonSupersequence(String s) {

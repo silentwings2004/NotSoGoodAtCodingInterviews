@@ -1,4 +1,4 @@
-package Templates;
+package S0_Templates;
 
 public class myPow {
     public double myPow(double x, int n) {

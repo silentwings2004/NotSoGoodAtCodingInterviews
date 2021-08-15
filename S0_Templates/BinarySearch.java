@@ -1,4 +1,4 @@
-package Templates;
+package S0_Templates;
 
 public class BinarySearch {
     public static int binarySearch2(int[] nums, int target) {
