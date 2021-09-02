@@ -1,12 +1,6 @@
-/*
- * @lc app=leetcode id=5 lang=java
- *
- * [5] Longest Palindromic Substring
- */
+package S0_Templates;
 
-// @lc code=start
-class Solution {
-    // S1: Manacher
+public class Manacher {
     // time = O(n), space = O(n)
     public String longestPalindrome(String s) {
         // corner case
@@ -37,6 +31,8 @@ class Solution {
             }
         }
 
+        //********************************************* */
+        // below are specific to the problem, eg.LC5
         int maxLen = -1, center = 0;
         for (int i = 0; i < n; i++) {
             if (p[i] > maxLen) {
@@ -48,5 +44,3 @@ class Solution {
         return s.substring(start, start + maxLen); // 不能直接让end = center/2 + maxLen/2,因为由于除2，可能小数位舍去，结果可能最终差1.
     }
 }
-// @lc code=end
-
