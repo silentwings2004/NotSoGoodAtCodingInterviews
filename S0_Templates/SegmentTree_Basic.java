@@ -28,7 +28,7 @@ public class SegmentTree_Basic {
         }
     }
 
-    private void init(SegTreeNode node, int a, int b) { // recursion
+    private void init(SegTreeNode node, int a, int b) { // init for range [a, b]
         // base case - single point
         if (a == b) {
             node.info = nums[a];
@@ -41,7 +41,7 @@ public class SegmentTree_Basic {
         }
         init(node.left, a, mid);
         init(node.right, mid + 1, b);
-        node.info = node.left.info + node.right.info;
+        node.info = node.left.info + node.right.info; // write your own logic
     }
 
     private void updateSingle(SegTreeNode node, int idx, int val) {

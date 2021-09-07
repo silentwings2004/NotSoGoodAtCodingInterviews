@@ -9,4 +9,7 @@ public class GetOneBit {
         }
         return count;
     }
+
+    // if encode is subset of state
+    if (state - encode == (encode ^ state))
 }
