@@ -15,28 +15,28 @@ public class BinarySearch {
         return -1;
     }
 
-    public static int lowerBound(int[] nums, int target) {
+    public static int upperBound(int[] nums, int target) {
         if (nums.length == 0) return 0;
 
+        int left = 0, right = nums.length - 1;
+        while (left < right) {
+            int mid = right - (right - left) / 2;
+            if (nums[mid] <= target) left = mid;
+            else right = mid - 1;
+        }
+        return nums[left] <= target ? left : left - 1;
+    }
+
+    public static int lowerBound(int[] nums, int target) {
+        if (nums.length == 0) return 0;
+        
         int left = 0, right = nums.length - 1;
         while (left < right) {
             int mid = left + (right - left) / 2;
             if (nums[mid] < target) left = mid + 1;
             else right = mid;
         }
-        return left; // 在[left, right]里 <= target的第一个位置，最小不会越过left
-    }
-
-    public static int upperBound(int[] nums, int target) {
-        if (nums.length == 0) return 0;
-        
-        int left = 0, right = nums.length - 1;
-        while (left < right) {
-            int mid = left + (right - left) / 2;
-            if (nums[mid] <= target) left = mid + 1;
-            else right = mid;
-        }
-        return left; // 在[left, right]里 > target的第一个位置，最大不超过right
+        return nums[left] >= target ? left : left + 1;
     }
 
     // B.S. II
