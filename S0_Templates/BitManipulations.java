@@ -20,7 +20,7 @@ public class BitManipulations {
 
     // Gospers-Hack -> interate all the m-bit state where there are k 1-bits
     int state = (1 << k) - 1;
-    while (state < (1 << m * n)) {
+    while (state < (1 << m)) {
         // do something(state)
         // eg: if (check(mat, state)) return k;
         int c = state & -state;
