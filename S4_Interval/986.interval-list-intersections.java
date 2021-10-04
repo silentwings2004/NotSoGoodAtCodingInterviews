@@ -28,6 +28,39 @@ class Solution {
         }
         return res.toArray(new int[res.size()][]);
     }
+
+    // S2: sweep line
+    // time = O((m + n) * log(m + n)), space = O(m + n)
+    public int[][] intervalIntersection2(int[][] firstList, int[][] secondList) {
+        List<int[]> diff = new ArrayList<>();
+
+        for (int[] x : firstList) {
+            diff.add(new int[]{x[0], 1});
+            diff.add(new int[]{x[1], -1});
+        }
+
+        for (int[] x : secondList) {
+            diff.add(new int[]{x[0], 1});
+            diff.add(new int[]{x[1], -1});
+        }
+
+        Collections.sort(diff, (o1, o2) -> o1[0] != o2[0] ? o1[0] - o2[0] : o2[1] - o1[1]);
+
+        int count = 0, start = -1, end = -1;
+        List<int[]> res = new ArrayList<>();
+
+        for (int[] x : diff) {
+            count += x[1];
+            if (x[1] == 1 && count == 2) start = x[0];
+            else if (x[1] == -1 && count == 1) {
+                end = x[0];
+                res.add(new int[]{start, end});
+            }
+        }
+        int[][] ans = new int[res.size()][2];
+        for (int i = 0; i < res.size(); i++) ans[i] = res.get(i);
+        return ans;
+    }
 }
 // @lc code=end
 

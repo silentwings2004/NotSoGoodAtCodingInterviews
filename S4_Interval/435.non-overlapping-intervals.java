@@ -6,6 +6,7 @@
 
 // @lc code=start
 class Solution {
+    // time = O(nlogn), space = O(1)
     public int eraseOverlapIntervals(int[][] intervals) {
         // corner case
         if (intervals == null || intervals.length == 0 || intervals[0] == null || intervals[0].length == 0) {
