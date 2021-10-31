@@ -19,6 +19,7 @@ class Solution {
             if (visited[i] != -1) continue;
             Queue<int[]> queue = new LinkedList<>(); // {node, group}
             queue.offer(new int[]{i, 0});
+            visited[i] = 0;
 
             while (!queue.isEmpty()) {
                 int[] cur = queue.poll();

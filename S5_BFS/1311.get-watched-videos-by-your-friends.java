@@ -10,23 +10,30 @@ import java.util.Queue;
 class Solution {
     // time = O(n + m + vlogv)，space = O(n + v) 其中n是人数，m是好友关系的总数，v是电影的总数
     public List<String> watchedVideosByFriends(List<List<String>> watchedVideos, int[][] friends, int id, int level) {
-        int n = friends.length;
+        int n = watchedVideos.size();
+        List<Integer>[] graph = new List[n];
+        for (int i = 0; i < n; i++) graph[i] = new ArrayList<>();
+        for (int i = 0; i < friends.length; i++) {
+            for (int f : friends[i]) {
+                graph[i].add(f);
+            }
+        }
+
         Queue<Integer> queue = new LinkedList<>();
         queue.offer(id);
         boolean[] visited = new boolean[n];
         visited[id] = true;
 
         int step = 0;
-        List<Integer> persons = new ArrayList<>();
         while (!queue.isEmpty()) {
             int size = queue.size();
             while (size-- > 0) {
                 int cur = queue.poll();
-                for (int f : friends[cur]) {
-                    if (visited[f]) continue;
-                    visited[f] = true;
-                    queue.offer(f);
-                    if (step + 1 == level) persons.add(f);
+                for (int next : graph[cur]) {
+                    if (!visited[next]) {
+                        queue.offer(next);
+                        visited[next] = true;
+                    }
                 }
             }
             step++;
@@ -34,22 +41,22 @@ class Solution {
         }
 
         HashMap<String, Integer> map = new HashMap<>();
-        for (int f : persons) {
-            List<String> videos = watchedVideos.get(f);
-            for (String v : videos) {
-                map.put(v, map.getOrDefault(v, 0) + 1);
+        while (!queue.isEmpty()) {
+            int f = queue.poll();
+            for (String video : watchedVideos.get(f)) {
+                map.put(video, map.getOrDefault(video, 0) + 1);
             }
         }
 
-        List<Pair> list = new ArrayList<>();
+        PriorityQueue<Pair> pq = new PriorityQueue<>((o1, o2) -> o1.freq != o2.freq ? o1.freq - o2.freq : o1.name.compareTo(o2.name));
+        
         for (String key : map.keySet()) {
-            list.add(new Pair(key, map.get(key)));
+            pq.offer(new Pair(key, map.get(key)));
         }
 
-        Collections.sort(list, (o1, o2) -> o1.freq != o2.freq ? o1.freq - o2.freq : o1.name.compareTo(o2.name));
         List<String> res = new ArrayList<>();
-        for (Pair p : list) {
-            res.add(p.name);
+        while (!pq.isEmpty()) {
+            res.add(pq.poll().name);
         }
         return res;
     }
