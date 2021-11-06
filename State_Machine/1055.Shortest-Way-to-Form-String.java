@@ -1,4 +1,5 @@
 class Solution {
+    // time = O(26m + n), space = O(26m)
     public int shortestWay(String source, String target) {
         int m = source.length();
         source = "#" + source;
