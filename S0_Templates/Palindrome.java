@@ -11,6 +11,15 @@ public class Palindrome {
         return y;
     }
 
+    public long createPalin(long i) { // construct palindrom of odd digits
+        String s = String.valueOf(i);
+        String s1 = s.substring(0, s.length() - 1);
+        StringBuilder sb = new StringBuilder(s1);
+        s1 = sb.reverse().toString();
+        s += s1;
+        return Long.valueOf(s);
+    }
+
     public boolean isPalin(long x) {
         String s = String.valueOf(x);
         int i = 0, j = s.length() - 1;
