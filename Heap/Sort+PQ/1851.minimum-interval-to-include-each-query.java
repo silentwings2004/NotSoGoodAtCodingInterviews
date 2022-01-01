@@ -9,7 +9,7 @@ import java.util.PriorityQueue;
 
 // @lc code=start
 class Solution {
-    // time = O(nlogn), space = O(n)   n: # of intervals
+    // time = O(mlogm + nlogn), space = O(m + n)
     public int[] minInterval(int[][] intervals, int[] queries) {
         List<int[]> qs = new ArrayList<>();
         for (int i = 0; i < queries.length; i++) {
