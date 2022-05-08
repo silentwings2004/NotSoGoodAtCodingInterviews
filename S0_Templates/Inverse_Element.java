@@ -18,8 +18,8 @@ public class Inverse_Element {
     public long quickPow(long x, long y) {
         long res = 1, cur = x;
         while (y > 0) {
-            if ((y & 1) != 0) res = (long) res * cur % mod;
-            cur = (long)cur * cur % mod;
+            if ((y & 1) != 0) res = res * cur % mod;
+            cur = cur * cur % mod;
             y >>= 1;
         }
         return res;
@@ -65,6 +65,8 @@ ll inv[N];
 int i;
 for(inv[1]=1, i=2; i<N; ++i)
     inv[i] = (M - M/i) * inv[M % i] % M
+
+
 逆元的一些性质
 逆元的计算有如下的性质：
 
